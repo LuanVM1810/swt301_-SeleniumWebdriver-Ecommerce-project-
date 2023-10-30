@@ -42,7 +42,7 @@ public class testcase2 {
 // Step 4: Click on Sony Xperia mobile
 
         WebElement sonyXperia = driver.findElement(By.xpath("//a[@title='Sony Xperia']"));
-        sonyXperia.click();
+        sonyXperia.click(); 
 // Step 5: Read the Sony Xperia mobile from the detail page
 
         WebElement detailElement = driver.findElement(By.xpath("//span[@class='h1']"));
