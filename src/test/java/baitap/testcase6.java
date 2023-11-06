@@ -69,7 +69,7 @@ public class testcase6 {
         newLogin.clickCheckout();
         // Step 12a: Enter Billing Information, and click Continue
         // Step 12b: Enter Shipping Information, and click Continue
-        newLogin.enterBillInfor("Go Vap","TP.HCM", "123456789");
+        newLogin.enterBillInfor();
         // Step 13: In Shipping Method, Click Continue
         newLogin.clickContinueShippingMethod();
         // Step 14: In Payment Information select 'Check/Money Order' radio button. Click Continue
@@ -77,6 +77,6 @@ public class testcase6 {
         // Step 15: Click 'PLACE ORDER' button
         newLogin.clickPlaceOrder();
         // Step 16: Verify Oder is generated. Note the order number*/
-        System.out.println("Order Number is: " + newLogin.noteOrderNumber());
+        newLogin.noteOrderNumber();
     }
 }

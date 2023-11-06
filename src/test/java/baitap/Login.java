@@ -1,10 +1,11 @@
 package baitap;
 
 import driver.driverFactory;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
+
+import java.io.File;
 
 public class Login {
     private String email;
@@ -79,47 +80,60 @@ public class Login {
         checkout.click();
     }
 
-    public void enterBillInfor(String address1, String city1, String telephone1){
+    public void enterBillInfor(){
 
-        WebElement dropdownElement = driver.findElement(By.xpath("//select[@id='billing-address-select']"));
-        //4. Init a Select Option instance
-        Select selectOption = new Select(dropdownElement);
-
-        //select options in dropdown list by Text
-        selectOption.selectByVisibleText("New Address");
-
-
-
-
-        WebElement address = driver.findElement(By.xpath("//input[@id='billing:street1']"));
-        address.clear();
-        address.sendKeys(address1);
-
-        WebElement city = driver.findElement(By.xpath("//input[@id='billing:city']"));
-        city.clear();
-        city.sendKeys(city1);
-
-        WebElement stateDropdown = driver.findElement(By.xpath("//select[@id='billing:region_id']"));
-        Select stateOption = new Select(stateDropdown);
-        //select options in dropdown list by Text
-        stateOption.selectByVisibleText("Florida");
-
-        WebElement countryDropdown = driver.findElement(By.xpath("//select[@id='billing:country_id']"));
-        Select countryOption = new Select(countryDropdown);
-        //select options in dropdown list by Text
-        countryOption.selectByVisibleText("United States");
-
-        WebElement telephone = driver.findElement(By.xpath("//input[@id='billing:telephone']"));
-        telephone.clear();
-        telephone.sendKeys(telephone1);
+//        WebElement dropdownElement = driver.findElement(By.xpath("//select[@id='billing-address-select']"));
+//        //4. Init a Select Option instance
+//        Select selectOption = new Select(dropdownElement);
+//
+//        //select options in dropdown list by Text
+//        selectOption.selectByVisibleText("New Address");
+//
+//
+//
+//
+//        WebElement address = driver.findElement(By.xpath("//input[@id='billing:street1']"));
+//        address.clear();
+//        address.sendKeys(address1);
+//
+//        WebElement city = driver.findElement(By.xpath("//input[@id='billing:city']"));
+//        city.clear();
+//        city.sendKeys(city1);
+//
+//        WebElement stateDropdown = driver.findElement(By.xpath("//select[@id='billing:region_id']"));
+//        Select stateOption = new Select(stateDropdown);
+//        //select options in dropdown list by Text
+//        stateOption.selectByVisibleText("Florida");
+//
+//        WebElement countryDropdown = driver.findElement(By.xpath("//select[@id='billing:country_id']"));
+//        Select countryOption = new Select(countryDropdown);
+//        //select options in dropdown list by Text
+//        countryOption.selectByVisibleText("United States");
+//
+//        WebElement telephone = driver.findElement(By.xpath("//input[@id='billing:telephone']"));
+//        telephone.clear();
+//        telephone.sendKeys(telephone1);
+//
+//        WebElement btnContinue = driver.findElement(By.xpath("//button[@onclick='billing.save()']//span//span[contains(text(),'Continue')]"));
+//        btnContinue.click();
 
         WebElement btnContinue = driver.findElement(By.xpath("//button[@onclick='billing.save()']//span//span[contains(text(),'Continue')]"));
         btnContinue.click();
+        try {
+            Thread.sleep(2000);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void clickContinueShippingMethod(){
-        WebElement btnContinue = driver.findElement(By.xpath("//button[@onclick='shippingMethod.save()']//span//span[contains(text(),'Continue')]"));
-        btnContinue.click();
+        WebElement btnContinueShipping = driver.findElement(By.xpath("//button[@onclick='shippingMethod.save()']//span//span[contains(text(),'Continue')]"));
+        btnContinueShipping.click();
+        try {
+            Thread.sleep(2000);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void checkMoneyOrder(){
@@ -128,16 +142,73 @@ public class Login {
 
         WebElement btnContinue = driver.findElement(By.xpath("//button[@onclick='payment.save()']"));
         btnContinue.click();
+        try {
+            Thread.sleep(2000);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void clickPlaceOrder(){
         WebElement btnPlaceOrder = driver.findElement(By.xpath("//span[contains(text(),'Place Order')]"));
         btnPlaceOrder.click();
+        try {
+            Thread.sleep(2000);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
-    public String noteOrderNumber(){
+    public void noteOrderNumber(){
         WebElement orderNumber = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/p[1]/a[1]"));
-        return orderNumber.getText();
+        System.out.println(orderNumber.getText());
+
+        int scc=1;
+        try{
+            File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+            String png = ("C:\\Users\\Anh Luan\\Pictures\\Screenshots\\verifyOrderNumber") + scc + ".png";
+            FileUtils.copyFile(srcFile, new File(png));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void clickMyOrders(){
+        WebElement myOrder = driver.findElement(By.xpath("//a[normalize-space()='My Orders']"));
+        myOrder.click();
+    }
+
+    public void clickViewOrders(){
+        WebElement viewOrder = driver.findElement(By.xpath("//a[normalize-space()='View Order']"));
+        viewOrder.click();
+    }
+
+    public void printOrders(){
+        WebElement printOrders = driver.findElement(By.xpath("//a[@class='link-print']"));
+        printOrders.click();
+    }
+
+    public void clickReorder(){
+        WebElement clickReorder = driver.findElement(By.xpath("//a[@class='link-reorder']"));
+        clickReorder.click();
+
+        WebElement changeQTY = driver.findElement(By.xpath("//input[@title='Qty']"));
+        changeQTY.clear();
+        changeQTY.sendKeys("10");
+
+        WebElement btnUpdate = driver.findElement(By.xpath("//button[@title='Update']"));
+        btnUpdate.click();
+    }
+
+    public void verifyChangeTotal(){
+        int scc=1;
+        try{
+            File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+            String png = ("C:\\Users\\Anh Luan\\Pictures\\Screenshots\\verifyChangeGTotal") + scc + ".png";
+            FileUtils.copyFile(srcFile, new File(png));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 }
