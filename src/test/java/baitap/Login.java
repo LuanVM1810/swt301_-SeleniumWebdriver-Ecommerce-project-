@@ -80,45 +80,74 @@ public class Login {
         checkout.click();
     }
 
-    public void enterBillInfor(){
+    public void enterBillInfor(String address1, String city1, String telephone1){
 
-//        WebElement dropdownElement = driver.findElement(By.xpath("//select[@id='billing-address-select']"));
-//        //4. Init a Select Option instance
-//        Select selectOption = new Select(dropdownElement);
-//
-//        //select options in dropdown list by Text
-//        selectOption.selectByVisibleText("New Address");
-//
-//
-//
-//
-//        WebElement address = driver.findElement(By.xpath("//input[@id='billing:street1']"));
-//        address.clear();
-//        address.sendKeys(address1);
-//
-//        WebElement city = driver.findElement(By.xpath("//input[@id='billing:city']"));
-//        city.clear();
-//        city.sendKeys(city1);
-//
-//        WebElement stateDropdown = driver.findElement(By.xpath("//select[@id='billing:region_id']"));
-//        Select stateOption = new Select(stateDropdown);
-//        //select options in dropdown list by Text
-//        stateOption.selectByVisibleText("Florida");
-//
-//        WebElement countryDropdown = driver.findElement(By.xpath("//select[@id='billing:country_id']"));
-//        Select countryOption = new Select(countryDropdown);
-//        //select options in dropdown list by Text
-//        countryOption.selectByVisibleText("United States");
-//
-//        WebElement telephone = driver.findElement(By.xpath("//input[@id='billing:telephone']"));
-//        telephone.clear();
-//        telephone.sendKeys(telephone1);
-//
-//        WebElement btnContinue = driver.findElement(By.xpath("//button[@onclick='billing.save()']//span//span[contains(text(),'Continue')]"));
-//        btnContinue.click();
+        WebElement dropdownElement = driver.findElement(By.xpath("//select[@id='billing-address-select']"));
+        //4. Init a Select Option instance
+        Select selectOption = new Select(dropdownElement);
 
+        //select options in dropdown list by Text
+        selectOption.selectByVisibleText("New Address");
+
+
+
+        try {
+            Thread.sleep(3000);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        WebElement address = driver.findElement(By.xpath("//input[@id='billing:street1']"));
+        address.clear();
+        address.sendKeys(address1);
+
+        try {
+            Thread.sleep(3000);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        WebElement city = driver.findElement(By.xpath("//input[@id='billing:city']"));
+        city.clear();
+        city.sendKeys(city1);
+
+        try {
+            Thread.sleep(3000);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        WebElement stateDropdown = driver.findElement(By.xpath("//select[@id='billing:region_id']"));
+        Select stateOption = new Select(stateDropdown);
+        //select options in dropdown list by Text
+        stateOption.selectByVisibleText("Florida");
+
+        try {
+            Thread.sleep(3000);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        WebElement countryDropdown = driver.findElement(By.xpath("//select[@id='billing:country_id']"));
+        Select countryOption = new Select(countryDropdown);
+        //select options in dropdown list by Text
+        countryOption.selectByVisibleText("United States");
+
+        try {
+            Thread.sleep(3000);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        WebElement telephone = driver.findElement(By.xpath("//input[@id='billing:telephone']"));
+        telephone.clear();
+        telephone.sendKeys(telephone1);
+
+        try {
+            Thread.sleep(3000);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         WebElement btnContinue = driver.findElement(By.xpath("//button[@onclick='billing.save()']//span//span[contains(text(),'Continue')]"));
         btnContinue.click();
+
+//        WebElement btnContinue = driver.findElement(By.xpath("//button[@onclick='billing.save()']//span//span[contains(text(),'Continue')]"));
+//        btnContinue.click();
         try {
             Thread.sleep(2000);
         }catch(Exception e){
@@ -206,6 +235,7 @@ public class Login {
             File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
             String png = ("C:\\Users\\Anh Luan\\Pictures\\Screenshots\\verifyChangeGTotal") + scc + ".png";
             FileUtils.copyFile(srcFile, new File(png));
+            Thread.sleep(2000);
         }catch (Exception e){
             e.printStackTrace();
         }

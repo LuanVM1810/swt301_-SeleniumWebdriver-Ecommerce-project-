@@ -69,7 +69,7 @@ public class testcase6 {
         newLogin.clickCheckout();
         // Step 12a: Enter Billing Information, and click Continue
         // Step 12b: Enter Shipping Information, and click Continue
-        newLogin.enterBillInfor();
+        newLogin.enterBillInfor("GV", "HaNoi", "456789");
         // Step 13: In Shipping Method, Click Continue
         newLogin.clickContinueShippingMethod();
         // Step 14: In Payment Information select 'Check/Money Order' radio button. Click Continue
