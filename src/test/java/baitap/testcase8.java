@@ -72,10 +72,12 @@ public class testcase8 {
             update.click();
             Thread.sleep(2000);
 
-//            WebElement grandTotal = driver.findElement(By.xpath("//strong//span[@class='price'][normalize-space()='$1,050.00']"));
-//            String expectedTotal = "$1,050.00";
-//            Assert.assertEquals(expectedTotal, grandTotal.getText());
-//            System.out.println("Grand Total is Changed");
+//            WebElement grandTotal = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[3]/div[1]/table[1]/tfoot[1]/tr[1]/td[2]/strong[1]/span[1]"));
+//          String expectedTotal = "$1,050.00";
+//          Assert.assertEquals(expectedTotal, grandTotal.getText());
+//            System.out.println("Grand Total is : " + grandTotal);
+
+
 
             CartPage cart = new CartPage(driver);
             cart.clickCheckout();

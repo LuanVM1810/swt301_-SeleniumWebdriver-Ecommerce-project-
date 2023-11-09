@@ -63,4 +63,13 @@ public class CartPage {
         WebElement checkout = driver.findElement(By.xpath("//li[@class='method-checkout-cart-methods-onepage-bottom']//button[@title='Proceed to Checkout']"));
         checkout.click();
     }
+
+    public void enterCoupon(){
+        WebElement coupon = driver.findElement(By.xpath("//input[@id='coupon_code']"));
+        coupon.clear();
+        coupon.sendKeys("GURU50");
+
+        WebElement applyButton = driver.findElement(By.xpath("//span[contains(text(),'Apply')]"));
+        applyButton.click();
+    }
 }

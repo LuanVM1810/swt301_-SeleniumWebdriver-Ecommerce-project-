@@ -34,4 +34,14 @@ public class LoginPage {
         WebElement loginButton = driver.findElement(By.name("send"));
         loginButton.click();
     }
+
+    public void clickMobile(){
+        WebElement mobile = driver.findElement(By.xpath("//a[normalize-space()='Mobile']"));
+        mobile.click();
+    }
+
+    public void addToCard(){
+        WebElement item = driver.findElement(By.xpath("//li[3]//div[1]//div[3]//button[1]//span[1]//span[1]"));
+        item.click();
+    }
 }
